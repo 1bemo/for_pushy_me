@@ -73,7 +73,7 @@ class PushyDemoState extends State<PushyDemo> {
 
     ///=== независимо от удачной или неудачной рагистрации ===///
     // выключить баннеры уведомлений (для iOS 10+)
-    Pushy.toggleInAppBanner(false);
+    Pushy.toggleInAppBanner(true);
     // слушаем полученные уведомления и при получении запускаем ф-ю _backgroundNotificationListener
     Pushy.setNotificationListener(_backgroundNotificationListener);
     // слушаем клики по уведомлениям и выполняем ф-ю при клике
@@ -88,13 +88,17 @@ class PushyDemoState extends State<PushyDemo> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-              title: Text(title), content: Text(message),
-              actions: [
-                ElevatedButton(
-                  child: const Text('OK'),
-                  onPressed: () { Navigator.pop(context); },
-                )
-              ]
+            title: Text(title), content: Text(message),
+            actions: [
+              ElevatedButton(
+                child: const Text('OK'),
+                onPressed: () { Navigator.pop(context); },
+              ),
+              ElevatedButton(
+                child: const Text('ВТОРОЙ OK'),
+                onPressed: () { Navigator.pop(context); },
+              )
+            ]
           );
         },
       );
